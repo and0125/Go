@@ -72,3 +72,55 @@ these are any real number.
 
 - true
 - false
+
+### Exercise Files
+
+[Printing the type of files](go\learning-exercises\type-printing.go)
+
+## Assignment Expressions
+
+This is also called variable declarations.
+
+This can be explicit or implicitly.
+
+The explicit assignment syntax was demonstrated above.
+
+Implicit assignment syntax is below:
+
+```Go
+var number = 260
+```
+
+This tells the language to guess the type of the value of the right side and make the variable the correct type to hold that value.
+
+Some times, its helpful to explicitly assign the type because you can do some restrictions, or you can implicitly assign when you're not sure what an output stored as a variable could be.
+
+### The Walrus
+
+There's another syntax for assignment when you can use a colon with the equal sign that allows the language to guess the type:
+
+```Go
+number := 64
+```
+
+### Important Note
+
+You CANNOT use assignment syntax to re-assign the value of the right side.
+
+### Empty Variables
+
+To name a variable without assigning a type, you can use the following syntax:
+
+```Go
+var bl bool
+```
+
+When you assign with this syntax, Go assigns a default value. For Booleans, this is false.
+
+All the types have a default value that will be assigned if you do not assign a value.
+
+## fmt Module
+
+This is the printing functionality in Go.
+
+There are formatted strings and standard strings.
