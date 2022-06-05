@@ -73,7 +73,7 @@ these are any real number.
 - true
 - false
 
-### Exercise Files
+### Exercise File
 
 [Printing the type of files](go\learning-exercises\type-printing.go)
 
@@ -124,3 +124,68 @@ All the types have a default value that will be assigned if you do not assign a 
 This is the printing functionality in Go.
 
 There are formatted strings and standard strings.
+
+### Tips for formatting strings
+
+#### General
+
+- %v : displays the value in the default format
+- %T : displays the type
+- %% : prints a percent sign
+
+#### Boolean
+
+- %t prints either true or false depending on the variable provided
+
+#### Integer
+
+- %b : base 2
+- %o : base 8
+- %d : base 10
+- %x : base 16 - hexadecimal
+
+#### Floating Points
+
+- %e : scientific notation
+- %f / %F : decimal, with no exponent
+- %g : for large decimal values to see the whole number.
+
+##### Width, Percision, and Padding
+
+when you want to make a string a certain length, add a number before the format chracter. a whole number represents the width, and the decimal part would represent the percision.
+
+Example:
+
+- %9f : adds nine spaces before number, but retains the normal precision.
+- %9.2f : adds the nine spaces before, but also reduces the number of decimal places to two.
+
+Negative numbers add widths on the right side of the variable value instead of the left. Makes the variable left justified.
+
+It's also possible to pad a number to add additional zeros before the whole number.
+
+Example:
+
+- %07d prints the variable value with seven padded zeros before the value.
+
+#### Strings
+
+- %s : exact variable value
+- %v : exact variable value with quotations
+- \n : new line character
+- \t : tab character
+
+### Exercise File
+
+[Printing options exercise](go\learning-exercises\printing-options.go)
+
+## Converting Strings and User Input
+
+grab input from the user with the following scanner:
+
+bufio.NewScanner(os.Stdin)
+
+Input from the user is automatically read as a string. To get the input as another data type, you'll have to parse the input:
+
+input := strconv.ParseInt(scanner.Text, 10, 64)
+
+the second input is the base (base 10) and the third is the number of bits (64 bit).
