@@ -95,22 +95,14 @@ These are called embedded structs, and you can access these also by the dot oper
 
 Methods are functions we perform on objects, and you can make methods for a particular object that are specific to the fields in that particular object.
 
-```Go
-    type Student struct {
-        name string
-        grades []int
-        age int
-    }
+the methods are accessed using the dot operator on structs which have a defined method.
 
-    func (s Student) getAge() int {
+When you want to change a value of a struct property, you want to use the pointer.
 
-    }
+If you just want to show then you can just take the value, but common practice is to take the pointer anyways.
 
+Structs are used to make custom objects with their own properties and methods.
 
-    func main() {
-        var x int = 5
+### Exercise File
 
-    }
-
-
-```
+[Struct methods demonstrated](go\learning-exercises\struct-methods.go)
