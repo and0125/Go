@@ -106,3 +106,27 @@ Structs are used to make custom objects with their own properties and methods.
 ### Exercise File
 
 [Struct methods demonstrated](go\learning-exercises\struct-methods.go)
+
+## Interfaces
+
+interfaces are ways to group structs together with other structs that have similar behavior.
+
+The interfaces allows you to treat structs with common properties similarly in certain methods. Like how the area calculation works on both circles and squares.
+
+syntax:
+
+```Go
+type shape interface {
+    area() float64
+}
+```
+
+When a struct implements the interface, we can use the interface properties and methods on any struct that has the requirement defined as a property in the interface.
+
+so if a circle struct and a rect struct both had methods called area() and that method returned a float64 value, we could group them together in a shape object.
+
+Unfortunately, you can only use what's defined in the interface once an object is stored in the interface. So once a circle is stored in the interface, it no longer would have access to the radius of the circle.
+
+if we made an interface of pointers and not just a copy of the value, we need to pass in the pointer of the structs passed in.
+
+
