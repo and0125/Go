@@ -129,4 +129,70 @@ Unfortunately, you can only use what's defined in the interface once an object i
 
 if we made an interface of pointers and not just a copy of the value, we need to pass in the pointer of the structs passed in.
 
+Interfaces can be created to point at the same structs, and structs can implement any number of interfaces.
 
+When you are viewing a struct through an interface lens, it restricts what you can do with that struct.
+
+This can be used to make your code cleaner and more efficient.
+
+## Channels
+
+Channels are used to transfer data between two different Go routines.
+
+```Go
+
+func main() {
+    dataChan := make(chan int) // could be any type or struct
+}
+```
+
+Channels can give you a deadlock error because these channels do not store values. Channels are like a portal. If data enters the channel, it also has to exit the channel at the same time.
+
+The only way for this to happen is for the insertion and retrieval of the data in the channel to happen in two different Go routines.
+
+syntax for a separate Go routine (put this inside main function):
+
+```Go
+go func() {
+	dataChan <- 789
+}()
+```
+
+This allows for multithreading; one thread is sending data, another is receiving it.
+
+It's possible to add space to a channel though, making the channel a buffered channel, by adding an additional parameter to define the channel:
+
+```Go
+func main() {
+    dataChan := make(chan int, 1)
+}
+```
+
+The integer value added to the channel declaration tells the processor how many data points the channel should hold.
+
+Channels are meant to be used in a multithreaded context. you can add data in a for loop to a channel (or potentially stream data in a buffered channel) then pass that data to another Go routine for processing. To avoid getting a deadlock when the condition of the for loop is no longer met, you can close the data channel.
+
+Channels can manage the flow of data, but it's easy for these to get out of hand, and are not always the best tool for the job. There are certain libraries that use them, and they can be a useful tool.
+
+### Exercise File
+
+[Multithreading with channels](go\learning-exercises\multithreaded-channels.go)
+
+## Contexts
+
+These allow you to add some logic to cancel a go routine at a certain point without running the whole routine.
+
+```Go
+func main() {
+    timeoutContext, cancel := context.WithTimeout(context.Background(), time.Millisecond * 100)
+    defer cancel()
+        // this can then be added as a value to
+
+}
+```
+
+This can be incorporated in declaring a go routine (example was an http request).
+
+Go can also be used to run a server, and you can use this to cancel a job if the client connection closes. This can cancel the http request immediately, and can make these requests more efficient.
+
+You can also use a parent context.
